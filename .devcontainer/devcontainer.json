@@ -17,6 +17,11 @@
     "ghcr.io/devcontainers/features/azure-cli:1": {
       "version": "latest",
       "installBicep": false
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "enableNonRootDocker": "true",
+      "moby": true
     }
   }
 }
