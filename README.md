@@ -13,7 +13,7 @@ Using `mise`, `chezmoi`, and `devcontainers`.
 Clone the repo onto your machine.
 
 ```bash
-git clone git@github.com:tanzimul3islam/devpod-base.git .
+git clone https://github.com:tanzimul3islam/devpod-base.git .
 cd devpod-base
 ```
 
@@ -48,7 +48,7 @@ The full documentation is available at [https://devpod.sh/docs/what-is-devpod].
 
 ```bash
 devpod provider add docker
-devpod up . --ide none --dotfiles git@github.com:<github_username>/<dotfiles-repo> (--recreate) # start/mount a devpod using the current directory, no IDE set and a specified dotfiles repo. (recreate rebuilds the container)
+devpod up . --ide none --dotfiles https://github.com:<github_username>/<dotfiles-repo> (--recreate) # start/mount a devpod using the current directory, no IDE set and a specified dotfiles repo. (recreate rebuilds the container)
 devpod ssh  # gives a list of available containers to ssh into
 ```
 
