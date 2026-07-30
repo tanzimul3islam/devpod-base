@@ -9,9 +9,9 @@ RUN usermod -l $USERNAME vscode && \
 # Install the curl, vim and, tmux packages
 RUN apt-get update && apt-get install -y curl vim tmux alacritty
 
-COPY --from=jdxcode/mise /usr/local/bin/mise /usr/local/bin/
+# Install mise
+COPY --from=docker.io/jdxcode/mise:latest /usr/local/bin/mise /usr/local/bin/
 
-# make sure mise is activated in both zsh and bash. Might be overridden by a user's dotfiles.
 RUN echo 'eval "$(mise activate bash)"' >> /home/$USERNAME/.bashrc && \
     echo 'eval "$(mise activate zsh)"' >> /home/$USERNAME/.zshrc
 
