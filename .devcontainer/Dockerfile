@@ -7,7 +7,7 @@ RUN usermod -l $USERNAME vscode && \
     groupmod -n $USERNAME vscode
 
 # Install the curl, vim and, tmux packages
-RUN apt-get update && apt-get install -y curl vim tmux alacritty
+RUN apt-get update && apt-get install -y curl vim tmux alacritty direnv
 
 # Install mise
 COPY --from=docker.io/jdxcode/mise:latest /usr/local/bin/mise /usr/local/bin/
