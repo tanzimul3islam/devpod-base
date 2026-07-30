@@ -1,10 +1,13 @@
 FROM mcr.microsoft.com/devcontainers/base:ubuntu-24.04
 
-# Rename the 'vscode' user to 'david'
+# Rename the 'vscode' user to 'tanzimul'
 ARG USERNAME=tanzimul
 RUN usermod -l $USERNAME vscode && \
     usermod -m -d /home/$USERNAME $USERNAME && \
     groupmod -n $USERNAME vscode
+
+RUN groupadd -f docker && \
+    usermod -aG docker $USERNAME
 
 # Install the curl, vim and, tmux packages
 RUN apt-get update && apt-get install -y curl vim tmux alacritty direnv
@@ -14,6 +17,7 @@ COPY --from=docker.io/jdxcode/mise:latest /usr/local/bin/mise /usr/local/bin/
 
 RUN echo 'eval "$(mise activate bash)"' >> /home/$USERNAME/.bashrc && \
     echo 'eval "$(mise activate zsh)"' >> /home/$USERNAME/.zshrc
+
 
 # Give the non-root use sudo access
 
