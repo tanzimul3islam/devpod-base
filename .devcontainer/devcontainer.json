@@ -6,6 +6,10 @@
   },
   "remoteUser": "tanzimul",
   "postCreateCommand": "scripts/setup",
+  "containerEnv": {
+    "WAYLAND_DISPLAY": "${localEnv:WAYLAND_DISPLAY}",
+    "XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}"
+  },
   "mounts": [
     "source=/run/user/1000/podman/podman.sock,target=/var/run/docker.sock,type=bind"
   ],
