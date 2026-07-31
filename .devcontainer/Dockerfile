@@ -10,7 +10,7 @@ RUN groupadd -f docker && \
     usermod -aG docker $USERNAME
 
 # Install the curl, vim and, tmux packages
-RUN apt-get update && apt-get install -y curl vim tmux alacritty direnv
+RUN apt-get update && apt-get install -y curl vim tmux alacritty direnv wl-clipboard
 
 # Install mise
 COPY --from=docker.io/jdxcode/mise:latest /usr/local/bin/mise /usr/local/bin/
