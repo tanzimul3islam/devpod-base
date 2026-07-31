@@ -2,19 +2,31 @@
   "build": {
     "context": "..",
     "dockerfile": "Dockerfile",
-    "args": { "USERNAME": "tanzimul" }
+    "args": {
+      "USERNAME": "tanzimul"
+    }
   },
+
   "remoteUser": "tanzimul",
+
   "postCreateCommand": "scripts/setup",
+
   "containerEnv": {
     "WAYLAND_DISPLAY": "${localEnv:WAYLAND_DISPLAY}",
-    "XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}"
+    "XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}",
+    "DOCKER_HOST": "unix:///var/run/docker.sock"
   },
+
   "mounts": [
-    "source=/run/user/1000/podman/podman.sock,target=/var/run/docker.sock,type=bind"
+    "source=${localEnv:XDG_RUNTIME_DIR},target=${localEnv:XDG_RUNTIME_DIR},type=bind",
+    "source=${localEnv:XDG_RUNTIME_DIR}/podman/podman.sock,target=/var/run/docker.sock,type=bind"
   ],
+
   "features": {
-    "ghcr.io/devcontainers/features/nix:1": { "version": "latest", "multiUser": true },
+    "ghcr.io/devcontainers/features/nix:1": {
+      "version": "latest",
+      "multiUser": true
+    },
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "version": "latest",
       "moby": true
